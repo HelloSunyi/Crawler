@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eda1a93-3d9d-4287-b939-dfa282d9434d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/biedou.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/duanzi.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/haha.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/pengfu.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/qiushi.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xiha.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawler/items.py" afterPath="$PROJECT_DIR$/Crawler/items.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawler/pipelines.py" afterPath="$PROJECT_DIR$/Crawler/pipelines.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawler/settings.py" afterPath="$PROJECT_DIR$/Crawler/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawler/spiders/joke_spider.py" afterPath="$PROJECT_DIR$/Crawler/spiders/joke_spider.py" />
     </list>
     <ignored path="Crawler.iws" />
     <ignored path=".idea/workspace.xml" />
