@@ -132,31 +132,23 @@ class qiushi_Spider(scrapy.Spider):
     allowed_domains = ["qiushibaike.com"]
     pipeline = set([QiuShiPipeline, ])
 
+    #start_urls = ['http://www.douban.com/group/explore?tag=%E8%B4%AD%E7%89%A9',]
     start_urls = []
-    for i in range(2, 35):
+
+    for i in range(2, 3):#35
         url = 'http://www.qiushibaike.com/text/page/' + str(i) + '/?s=4932402'
         start_urls.append(url)
+
 
     def start_requests(self):
         for url in self.start_urls:
             yield self.make_requests_from_url(url)
 
     def parse(self, response):
-
+        print "----------"
+        print response.body
+        print "----------eof"
         for sel in response.xpath('//div[@class="content"]'):
             item = JokeItem()
             item['joke_content'] = sel.extract()
             yield item
-
-    @staticmethod
-    def process_request_headers(request):
-        """Process request to get 200 response for dianping
-            Dianping checks User-Agent in headers and _hc.v in cookies.
-            Fake these parts.
-        """
-        request.headers.setdefault('User-Agent',
-                                   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) '
-                                   'AppleWebKit/537.36 (KHTML, like Gecko) '
-                                   'Chrome/51.0.2704.103 Safari/537.36')
-        request.cookies.setdefault('_hc.v', '%s.%d' % (str(uuid.uuid1()),
-                                                       int(time.time())))
