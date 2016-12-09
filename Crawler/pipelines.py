@@ -6,9 +6,21 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import codecs
 import functools
+import json
 
 
+class FootballPipeline(object):
+    def __init__(self):
+        self.file = codecs.open("football_name.txt", 'w', encoding ='utf-8')
 
+    def close(self, spider):
+        self.file.close()
+
+    #@check_spider_pipeline
+    def process_item(self, item, spider):
+
+        self.file.writelines(item['team_name'] + " " + item['country'] + " " + item['founded_time'] + " " + item["league"] + " " + item["coach"] + " " + item["city"] + " " + item["court"] + item["official_website"] + "\n")
+        return item
 
 class StationPipeline(object):
     def __init__(self):
@@ -250,4 +262,17 @@ class XiHaPipeline(object):
             j = j.rstrip()
             clean_joke = clean_joke + j
         self.file.writelines(clean_joke + "\n")
+        return item
+
+class AnZhuoPipeline(object):
+    def __init__(self):
+        self.file = codecs.open('anzhuo_app_shejiao.json', 'w', encoding ='utf-8')
+
+    def close(self, spider):
+        self.file.close()
+
+    #@check_spider_pipeline
+    def process_item(self, item, spider):
+        line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+        self.file.write(line)
         return item

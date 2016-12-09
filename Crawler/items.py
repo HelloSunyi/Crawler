@@ -57,4 +57,24 @@ class SubwayItem(scrapy.Item):
     city_name = scrapy.Field()
     path_name = scrapy.Field()
 
+class FootballItem(scrapy.Item):
+    team_name = scrapy.Field()#0
+    country = scrapy.Field()#1
+    founded_time = scrapy.Field()#2
+    league = scrapy.Field()#3
+    coach = scrapy.Field()#4
+    city = scrapy.Field()#5
+    court = scrapy.Field()#6
+    official_website = scrapy.Field()#7
 
+class AnZhuoItem(scrapy.Item):
+    name = scrapy.Field()
+    producer = scrapy.Field()
+    hot_level = scrapy.Field()
+    size = scrapy.Field()
+    category = scrapy.Field()
+    update_time = scrapy.Field()
+    firmware = scrapy.Field()
+    grade = scrapy.Field()
+    description = scrapy.Field()
+    update_info = scrapy.Field()

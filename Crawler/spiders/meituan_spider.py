@@ -12,11 +12,9 @@ class shenzhou_Spider(scrapy.Spider):
 
     pipeline = set([LocationPipeline, ])
 
-    file = codecs.open('baike_location.txt', 'r+', 'utf-8')
-    start_urls = file.readlines()
-    file.close()
 
-    #start_urls = ['http://www.meituan.com/index/changecity',]
+
+    start_urls = ['http://www.meituan.com/index/changecity',]
 
     def start_requests(self):
         for url in self.start_urls:

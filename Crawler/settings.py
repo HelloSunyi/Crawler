@@ -23,7 +23,7 @@ ITEM_PIPELINES = {
 #'Crawler.pipelines.BieDouPipeline': 1,
 #'Crawler.pipelines.PengFuPipeline': 1,
 #'Crawler.pipelines.XiHaPipeline': 1,
-'Crawler.pipelines.FoodPipeline': 1,
+#'Crawler.pipelines.FoodPipeline': 1,
 #'Crawler.pipelines.StationPipeline': 1,
 #'Crawler.pipelines.ProxyPipeline': 1,
 #'Crawler.pipelines.LocationPipeline': 1,
@@ -33,7 +33,9 @@ ITEM_PIPELINES = {
 #'Crawler.pipelines.LvYouPipeline': 1,
 #'Crawler.pipelines.SubwayPipeline': 1,
 #'Crawler.pipelines.FootballPipeline': 1,
+'Crawler.pipelines.AnZhuoPipeline': 1,
 }
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
