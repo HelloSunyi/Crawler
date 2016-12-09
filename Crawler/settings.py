@@ -11,8 +11,19 @@
 
 BOT_NAME = 'Crawler'
 
-SPIDER_MODULES = ['Crawler.spiders']
+SPIDER_MODULES = ['Crawler.spiders', 'Crawler.yiming_spiders']
 NEWSPIDER_MODULE = 'Crawler.spiders'
+OLDSPIDER_MODULE = 'Crawler.spiders'
+
+# mongodb_crawler: name of the container which runs mongodb, 27017: default port
+DB_INFO = {
+    'type': 'mongodb',
+    'host': 'mongodb_crawler',
+    'port': 27017,
+}
+
+# proxy_server
+PROXY_SERVER = 'http://42.159.29.192:9000'
 
 # Obey robots.txt rules
 #ROBOTSTXT_OBEY = True
@@ -60,11 +71,13 @@ ITEM_PIPELINES = {
 #   'Accept-Language': 'en',
 #}
 
-# Enable or disable spider middlewares
-# See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'Crawler.middlewares.MyCustomSpiderMiddleware': 543,
-#}
+
+# Enable or disable downloader middlewares
+# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
+DOWNLOADER_MIDDLEWARES = {
+    'Crawler.middlewares.HeadersMiddleware': 200,
+    'Crawler.middlewares.ProxyManagerMiddleware': 725,
+}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html

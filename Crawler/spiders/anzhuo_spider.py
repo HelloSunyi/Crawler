@@ -1,26 +1,26 @@
-import scrapy
 import time
+
 from scrapy import Request
 
 from Crawler.items import AnZhuoItem
 from Crawler.pipelines import AnZhuoPipeline
+from Crawler.yiming_spiders.base_spider import BaseSpider
 
 
-class anzhuo_Spider(scrapy.Spider):
+class anzhuo_Spider():
     name = "anzhuo_app"
 
     pipeline = set([AnZhuoPipeline, ])
 
     start_urls = []
 
-    for i in range(1, 51) :
+    for i in range(1, 51):
         url = 'http://apk.hiapk.com/apps/Social?sort=5&pi=' + str(i)
         start_urls.append(url)
 
     def start_requests(self):
         for url in self.start_urls:
             yield self.make_requests_from_url(url)
-
 
     def parse2(self, response):
         time.sleep(3)
@@ -39,58 +39,57 @@ class anzhuo_Spider(scrapy.Spider):
         grade = response.xpath("//div[@class='star_num']/text()").extract()
 
         item = AnZhuoItem()
-        if len(name) > 0 :
+        if len(name) > 0:
             item['name'] = name[0].strip()
-        else :
+        else:
             item['name'] = ''
 
-        if len(producer) > 0 :
+        if len(producer) > 0:
             item['producer'] = producer[0].strip()
-        else :
+        else:
             item['producer'] = ''
 
-        if len(hot_level) > 0 :
+        if len(hot_level) > 0:
             item['hot_level'] = hot_level[0].strip()
-        else :
+        else:
             item['hot_level'] = ''
 
-        if len(size) > 0 :
+        if len(size) > 0:
             item['size'] = size[0].strip()
-        else :
+        else:
             item['size'] = ''
 
-        if len(category) > 0 :
+        if len(category) > 0:
             item['category'] = category[0].strip()
-        else :
+        else:
             item['category'] = ''
 
-        if len(update_time) > 0 :
+        if len(update_time) > 0:
             item['update_time'] = update_time[0].strip()
-        else :
+        else:
             item['update_time'] = ''
 
-        if len(firmware) > 0 :
+        if len(firmware) > 0:
             item['firmware'] = firmware[0].strip()
-        else :
+        else:
             item['firmware'] = ''
 
-        if len(description) > 0 :
+        if len(description) > 0:
             item['description'] = description[0].strip()
-        else :
+        else:
             item['description'] = ''
 
-        if len(update_info) > 0 :
+        if len(update_info) > 0:
             item['update_info'] = update_info[0].strip()
-        else :
+        else:
             item['update_info'] = ''
 
-        if len(grade) > 0 :
+        if len(grade) > 0:
             item['grade'] = grade[0].strip()
-        else :
+        else:
             item['grade'] = ''
 
         return item
-
 
     def parse(self, response):
 
@@ -98,6 +97,4 @@ class anzhuo_Spider(scrapy.Spider):
         for url in response.xpath('//dl[@class="list_content"]/dt/span[1]/a/@href').extract():
             print url
             time.sleep(3)
-            yield Request(url = url_prefix + url, callback = self.parse2)
-
-
+            yield Request(url=url_prefix + url, callback=self.parse2)
