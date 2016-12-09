@@ -5,7 +5,7 @@ from scrapy.spiders import CrawlSpider
 from storage import get_storage
 
 
-class BaseSpiderBaseSpider(CrawlSpider):
+class BaseSpider(CrawlSpider):
     """Base class for crawl_corpora spiders
 
     BaseSpider include some common functions and methods for spiders, which may
